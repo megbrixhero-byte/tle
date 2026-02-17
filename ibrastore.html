@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>متجر تيلجرام</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Tajawal', sans-serif; }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #0a0a0f 0%, #0d1117 50%, #0a0a0f 100%);
+    }
+    
+    .glow-blue {
+      box-shadow: 0 0 40px rgba(56, 189, 248, 0.15);
+    }
+    
+    .card-gradient {
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.9) 0%, rgba(10, 15, 25, 0.95) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.1);
+    }
+    
+    .text-gradient {
+      background: linear-gradient(90deg, #38bdf8 0%, #7dd3fc 50%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .feature-icon {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(56, 189, 248, 0.05) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+    
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .animate-pulse-slow {
+      animation: pulse-slow 3s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-slow {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #38bdf8;
+      border-radius: 50%;
+      opacity: 0.3;
+    }
+    
+    .btn-glow {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-glow::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .btn-glow:hover::before {
+      left: 100%;
+    }
+    
+    .stats-card {
+      backdrop-filter: blur(10px);
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(56, 189, 248, 0.15);
+    }
+  </style>
+</head>
+<body class="h-full gradient-bg text-white overflow-auto">
+  <div class="min-h-full relative">
+    
+    <!-- Decorative particles -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="particle animate-pulse-slow" style="top: 10%; left: 20%;"></div>
+      <div class="particle animate-pulse-slow" style="top: 30%; left: 80%; animation-delay: 1s;"></div>
+      <div class="particle animate-pulse-slow" style="top: 60%; left: 10%; animation-delay: 2s;"></div>
+      <div class="particle animate-pulse-slow" style="top: 80%; left: 70%; animation-delay: 0.5s;"></div>
+      <div class="particle animate-pulse-slow" style="top: 45%; left: 50%; animation-delay: 1.5s;"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="relative z-10 py-6 px-4">
+      <div class="max-w-6xl mx-auto flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-xl feature-icon flex items-center justify-center">
+            <svg class="w-7 h-7 text-sky-400" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.03-1.99 1.27-5.62 3.72-.53.36-1.01.54-1.44.53-.47-.01-1.38-.27-2.06-.49-.83-.27-1.49-.42-1.43-.89.03-.24.37-.49 1.02-.74 3.99-1.74 6.65-2.89 7.99-3.45 3.8-1.6 4.59-1.88 5.1-1.89.11 0 .37.03.54.17.14.12.18.28.2.45-.01.06.01.24 0 .38z"/>
+            </svg>
+          </div>
+          <h1 id="store-name" class="text-2xl font-bold text-gradient">متجر تيلجرام</h1>
+        </div>
+        
+        <nav class="hidden md:flex items-center gap-6">
+          <span class="text-slate-400 hover:text-sky-400 cursor-pointer transition-colors">الرئيسية</span>
+          <span class="text-slate-400 hover:text-sky-400 cursor-pointer transition-colors">المنتجات</span>
+          <span class="text-slate-400 hover:text-sky-400 cursor-pointer transition-colors">تواصل معنا</span>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="relative z-10 px-4 py-12">
+      <div class="max-w-6xl mx-auto">
+        
+        <!-- Main Hero -->
+        <div class="text-center mb-16">
+          <div class="animate-float inline-block mb-8">
+            <div class="w-32 h-32 mx-auto rounded-3xl feature-icon flex items-center justify-center glow-blue">
+              <svg class="w-20 h-20 text-sky-400" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.03-1.99 1.27-5.62 3.72-.53.36-1.01.54-1.44.53-.47-.01-1.38-.27-2.06-.49-.83-.27-1.49-.42-1.43-.89.03-.24.37-.49 1.02-.74 3.99-1.74 6.65-2.89 7.99-3.45 3.8-1.6 4.59-1.88 5.1-1.89.11 0 .37.03.54.17.14.12.18.28.2.45-.01.06.01.24 0 .38z"/>
+              </svg>
+            </div>
+          </div>
+          
+          <h2 id="main-title" class="text-4xl md:text-6xl font-extrabold mb-6">
+            <span class="text-white">أفضل </span>
+            <span class="text-gradient">حسابات تيلجرام</span>
+          </h2>
+          
+          <p id="description-text" class="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed">
+            نقدم لك حسابات تيلجرام بأعلى جودة وأفضل الأسعار مع ضمان كامل وخدمة عملاء متميزة
+          </p>
+          
+          <button class="btn-glow bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 text-white font-bold text-xl px-12 py-4 rounded-2xl shadow-lg shadow-sky-500/30 cursor-not-allowed opacity-90">
+            <span class="flex items-center gap-3">
+              <span>انتقل للمنتجات</span>
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </span>
+          </button>
+          
+          <p class="text-slate-500 text-sm mt-4">قريباً - المنتجات في طور الإعداد</p>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+          <div class="stats-card rounded-2xl p-6 text-center">
+            <div class="text-3xl md:text-4xl font-bold text-gradient mb-2">+5000</div>
+            <div class="text-slate-400">عميل سعيد</div>
+          </div>
+          <div class="stats-card rounded-2xl p-6 text-center">
+            <div class="text-3xl md:text-4xl font-bold text-gradient mb-2">100%</div>
+            <div class="text-slate-400">ضمان الجودة</div>
+          </div>
+          <div class="stats-card rounded-2xl p-6 text-center">
+            <div class="text-3xl md:text-4xl font-bold text-gradient mb-2">24/7</div>
+            <div class="text-slate-400">دعم فني</div>
+          </div>
+          <div class="stats-card rounded-2xl p-6 text-center">
+            <div class="text-3xl md:text-4xl font-bold text-gradient mb-2">⚡</div>
+            <div class="text-slate-400">تسليم فوري</div>
+          </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="grid md:grid-cols-3 gap-6 mb-16">
+          
+          <!-- Feature 1 -->
+          <div class="card-gradient rounded-3xl p-8 hover:border-sky-400/30 transition-all duration-300">
+            <div class="w-16 h-16 rounded-2xl feature-icon flex items-center justify-center mb-6">
+              <svg class="w-8 h-8 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-3 text-white">جودة عالية</h3>
+            <p class="text-slate-400 leading-relaxed">حسابات أصلية ومفعلة بالكامل مع ضمان عدم الحظر وجودة ممتازة</p>
+          </div>
+          
+          <!-- Feature 2 -->
+          <div class="card-gradient rounded-3xl p-8 hover:border-sky-400/30 transition-all duration-300">
+            <div class="w-16 h-16 rounded-2xl feature-icon flex items-center justify-center mb-6">
+              <svg class="w-8 h-8 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-3 text-white">ثقة وأمان</h3>
+            <p class="text-slate-400 leading-relaxed">معاملاتك آمنة ومحمية مع ضمان استرجاع الأموال في حالة أي مشكلة</p>
+          </div>
+          
+          <!-- Feature 3 -->
+          <div class="card-gradient rounded-3xl p-8 hover:border-sky-400/30 transition-all duration-300">
+            <div class="w-16 h-16 rounded-2xl feature-icon flex items-center justify-center mb-6">
+              <svg class="w-8 h-8 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-3 text-white">تسليم سريع</h3>
+            <p class="text-slate-400 leading-relaxed">استلم حسابك فوراً بعد الدفع مع دعم فني متواصل على مدار الساعة</p>
+          </div>
+          
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="card-gradient rounded-3xl p-8 text-center">
+          <h3 class="text-2xl font-bold mb-6 text-white">لماذا تختارنا؟</h3>
+          <div class="flex flex-wrap justify-center gap-6">
+            <div class="flex items-center gap-2 text-slate-300">
+              <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span>حسابات مضمونة</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-300">
+              <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span>أسعار منافسة</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-300">
+              <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span>خبرة سنوات</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-300">
+              <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span>دعم متواصل</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 py-8 px-4 border-t border-slate-800/50">
+      <div class="max-w-6xl mx-auto text-center">
+        <p class="text-slate-500">© 2024 متجر تيلجرام - جميع الحقوق محفوظة</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    const defaultConfig = {
+      store_name: 'متجر تيلجرام',
+      main_title: 'أفضل حسابات تيلجرام',
+      description_text: 'نقدم لك حسابات تيلجرام بأعلى جودة وأفضل الأسعار مع ضمان كامل وخدمة عملاء متميزة',
+      background_color: '#0a0a0f',
+      surface_color: '#0f172a',
+      text_color: '#94a3b8',
+      primary_action_color: '#0ea5e9',
+      secondary_action_color: '#38bdf8'
+    };
+
+    async function onConfigChange(config) {
+      const storeName = document.getElementById('store-name');
+      const mainTitle = document.getElementById('main-title');
+      const descriptionText = document.getElementById('description-text');
+      
+      if (storeName) {
+        storeName.textContent = config.store_name || defaultConfig.store_name;
+      }
+      
+      if (mainTitle) {
+        const title = config.main_title || defaultConfig.main_title;
+        mainTitle.innerHTML = `<span class="text-white">أفضل </span><span class="text-gradient">حسابات تيلجرام</span>`;
+      }
+      
+      if (descriptionText) {
+        descriptionText.textContent = config.description_text || defaultConfig.description_text;
+      }
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+            set: (value) => {
+              config.primary_action_color = value;
+              window.elementSdk.setConfig({ primary_action_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['store_name', config.store_name || defaultConfig.store_name],
+        ['main_title', config.main_title || defaultConfig.main_title],
+        ['description_text', config.description_text || defaultConfig.description_text]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cf6608404a73765',t:'MTc3MTM0Mjc2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
